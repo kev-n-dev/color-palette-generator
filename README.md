@@ -6,7 +6,7 @@
 
 A sleek, **dark mode** color palette generator that creates **random color schemes** with just one click. Easily **copy** color codes by clicking on them, and enjoy a **modern, responsive** design.  
 
-🚀 **Live Demo:** [Coming Soon]
+🚀 **Live Demo:** [[color-palette-generator](https://kev-n-dev.github.io/color-palette-generator/)]
 
 ---
 
