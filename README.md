@@ -49,23 +49,7 @@ That's it! No dependencies required.
 
 ---
 
-## 📝 License
-
-This project is open-source and available under the **MIT License**.
-
----
-
 ### ⭐ Enjoyed this project?  
 Give it a **star** ⭐ on GitHub and feel free to **fork** it!  
 
 ---
-
-### **What This README Includes**  
-✅ **Catchy description**  
-✅ **Features list**  
-✅ **How to use it**  
-✅ **Setup & installation guide**  
-✅ **Placeholder for screenshots**  
-✅ **License info**  
-
-🔥 This will make your repo **look professional** on GitHub! Let me know if you want any tweaks. 🚀
