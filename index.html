@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Ownership & Author Info -->
+    <meta name="author" content="Your Name" />
+    <meta name="copyright" content="© 2025 Your Name" />
+    <meta
+      name="keywords"
+      content="color palette, color generator, web design, UI design"
+    />
+
+    <!-- SEO & Description -->
+    <meta
+      name="description"
+      content="A sleek, dark mode color palette generator with click-to-copy functionality and smooth animations."
+    />
+
+    <!-- Open Graph (For Social Media Sharing) -->
+    <meta property="og:title" content="Color Palette Generator" />
+    <meta
+      property="og:description"
+      content="Generate beautiful random color palettes with a modern dark mode UI. Click on any color to copy its hex code instantly!"
+    />
+    <meta property="og:image" content="https://yourwebsite.com/preview.png" />
+    <meta property="og:url" content="https://yourgithubrepo.com" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card (For Twitter Embeds) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Color Palette Generator" />
+    <meta
+      name="twitter:description"
+      content="A sleek, dark mode color palette generator with click-to-copy functionality and smooth animations."
+    />
+    <meta name="twitter:image" content="https://yourwebsite.com/preview.png" />
+    <title>Color Palette Generator</title>
+    <style>
+      /* General Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background: #121212;
+        color: #fff;
+        text-align: center;
+        padding: 30px;
+      }
+
+      /* Title */
+      h1 {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #f5f5f5;
+      }
+
+      /* Palette Container */
+      .palette {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      /* Color Box */
+      .color-box {
+        width: 120px;
+        height: 150px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        position: relative;
+      }
+
+      .color-box:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(255, 255, 255, 0.2);
+      }
+
+      /* Tooltip (Copy Notification) */
+      .tooltip {
+        position: absolute;
+        bottom: -30px;
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      /* Show Tooltip */
+      .color-box.copied .tooltip {
+        opacity: 1;
+      }
+
+      /* Generate Button */
+      button {
+        margin-top: 30px;
+        padding: 12px 24px;
+        font-size: 16px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #6e45e2, #88d3ce);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+
+      button:hover {
+        background: linear-gradient(135deg, #5733d9, #5ec4be);
+        transform: scale(1.05);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 600px) {
+        .palette {
+          flex-direction: column;
+          align-items: center;
+        }
+        .color-box {
+          width: 80%;
+          max-width: 250px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🎨 Color Palette Generator</h1>
+    <div class="palette" id="palette"></div>
+    <button onclick="generatePalette()">Generate Palette</button>
+
+    <script>
+      function randomColor() {
+        return (
+          "#" +
+          Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, "0")
+        );
+      }
+
+      function generatePalette() {
+        const palette = document.getElementById("palette");
+        palette.innerHTML = "";
+
+        for (let i = 0; i < 5; i++) {
+          let color = randomColor();
+          let box = document.createElement("div");
+          box.className = "color-box";
+          box.style.background = color;
+          box.innerText = color;
+
+          // Tooltip for copy notification
+          let tooltip = document.createElement("span");
+          tooltip.className = "tooltip";
+          tooltip.innerText = "Copied!";
+          box.appendChild(tooltip);
+
+          // Copy color on click
+          box.onclick = () => {
+            navigator.clipboard.writeText(color);
+            box.classList.add("copied");
+            setTimeout(() => box.classList.remove("copied"), 1000);
+          };
+
+          palette.appendChild(box);
+        }
+      }
+
+      generatePalette();
+    </script>
+  </body>
+</html>
